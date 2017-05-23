@@ -7,7 +7,7 @@ namespace ClashOfClans
     {
         static void Main(string[] args)
         {
-            var client = new RestClient("http://api.clashofclans.com/v1/");
+            var client = new RestClient("https://api.clashofclans.com/v1/");
 
             var request = new RestRequest("clans", Method.GET);
             request.AddParameter("name", "in yo face");
@@ -22,9 +22,10 @@ namespace ClashOfClans
             var responseContent = response.Content;
             Console.WriteLine("Sending request content to file...");
             var file = new System.IO.StreamWriter("..\\testApiCall.txt");
+            Console.WriteLine("Finished!");
             file.WriteLine("This is the response: " + responseContent);
-            file.WriteLine(response.ErrorMessage);
-            file.WriteLine(response.ErrorException);
+            file.WriteLine("These are the response errors: " + response.ErrorMessage);
+            file.WriteLine("These are the respone error exceptions: " + response.ErrorException);
             file.Close();
 
             Console.ReadLine();
