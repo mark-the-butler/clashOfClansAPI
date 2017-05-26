@@ -1,8 +1,12 @@
-﻿namespace ClashOfClans
+﻿using System.Collections.Generic;
+using RestSharp.Deserializers;
+
+namespace ClashOfClans
 {
     public class Clan
     {
-        public string Description { get; set; }
+        [DeserializeAs(Name = "items")]
+        public List<Member> ClanMembers { get; set; }
     }
 }
 
