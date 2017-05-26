@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using RestSharp;
 
 namespace ClashOfClans
@@ -17,8 +18,12 @@ namespace ClashOfClans
             
             var response = client.Execute<Clan>(request);
             var clanMembers = response.Data.ClanMembers;
+            var member = response.Data.ClanMembers.Single(x => x.Name == "Dada");
 
-            Console.WriteLine("Clan Members: ");
+            Console.WriteLine("____Individual Member____ ");
+            Console.WriteLine("Member name: " + member.Name);
+            Console.WriteLine("Member rank: " + member.ClanRank);
+            Console.WriteLine("____All Clan Members____");
 
             foreach (var clanMember in clanMembers)
             {
